@@ -5,15 +5,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
-@Named
+@Model
 public class Utils {
 
     public Utils() {
     }
 
     public String formatDate(Date date) {
+        if (date == null){
+            return "";
+        }
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return formater.format(date);
     }
@@ -31,5 +34,4 @@ public class Utils {
 
         return allSeats;
     }
-
 }

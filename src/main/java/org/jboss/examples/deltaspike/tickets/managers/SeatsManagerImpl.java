@@ -22,6 +22,9 @@ public class SeatsManagerImpl implements SeatsManager {
     private Utils utils;
 
     public List<String> getFreeSeats() {
+        if (ticket == null || ticket.getBus() == null){
+            return null;
+        }
         List<Ticket> busTickets = ticketRepository.getBusTickets(ticket.getBus().getId());
         List<String> freeSeats = utils.getAllBusSeats();
         for (Ticket ticket : busTickets) {

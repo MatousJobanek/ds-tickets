@@ -47,33 +47,24 @@ public class NavigationManager {
 
     public Class<? extends ViewConfig> submitSeats() {
 
-        if (ticket.getBus().getLine() == null || ticket.getBus().getDate() == null) {
+        if (ticket.getBus() == null || ticket.getBus().getLine() == null || ticket.getBus().getDate() == null) {
             return Pages.BusLine.class;
+        }
+        if (seats.getChosenSeats() == null || seats.getChosenSeats().size() == 0) {
+            return Pages.Seat.class;
         }
 
         List<Ticket> tickets = new ArrayList<Ticket>();
-
         order.setToPay(addTickets(tickets, seats.getChosenSeats()));
-
         order.setTickets(tickets);
+
         return Pages.Overview.class;
-    }
-
-    public Class<? extends ViewConfig> backToBusLine() {
-        return Pages.BusLine.class;
-    }
-
-    public Class<? extends ViewConfig> backToDate() {
-        return Pages.Date.class;
-    }
-
-    public Class<? extends ViewConfig> backToSeat() {
-        return Pages.Seat.class;
     }
 
     private double addTickets(List<Ticket> tickets, List<String> seatsToAdd) {
         double price = 0;
         if (seatsToAdd != null) {
+
             for (String seat : seatsToAdd) {
                 boolean isFirstClass = Integer.valueOf(seat.substring(0, seat.length() - 1)) < 4;
                 Ticket orderTicket = new Ticket(ticket.getBus(), seat, isFirstClass);
@@ -87,8 +78,19 @@ public class NavigationManager {
     }
 
     public Class<? extends ViewConfig> order() {
-
         order.setId(orderRepository.save(order).getId());
         return Pages.Ordered.class;
+    }
+
+    public Class<? extends ViewConfig> backToBusLine() {
+        return Pages.BusLine.class;
+    }
+
+    public Class<? extends ViewConfig> backToDate() {
+        return Pages.Date.class;
+    }
+
+    public Class<? extends ViewConfig> backToSeat() {
+        return Pages.Seat.class;
     }
 }

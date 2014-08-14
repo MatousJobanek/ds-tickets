@@ -36,7 +36,6 @@
 			<h:column>
 				<!-- column header -->
 				<f:facet name="header">Ticket No</f:facet>
-				<!-- row record -->
     				#{order.tickets.indexOf(orderItem) + 1} 
     			</h:column>
 
@@ -62,7 +61,7 @@
 
 			<h:column>
 				<f:facet name="header">First Class Surcharge</f:facet>
-    				 #{orderItem.isInFirstClass()}
+    				 #{orderItem.isInFirstClass() ? 'yes' : 'no'}
     			</h:column>
 
 			<h:column>

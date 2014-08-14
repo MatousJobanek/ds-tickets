@@ -43,27 +43,17 @@ public class AppInitializer implements Serializable {
         }
         System.err.println("initialized!!!!!!!!!!");
 
-        Line parisPrague = createLine("Paris", "Prague", 900);
-
-        Line pragueParis = createLine("Prague", "Paris", 900);
-
-        // Line parisLisboa = createLine("Paris", "Lisboa", 800);
-        //
-        // Line lisboaParis = createLine("Lisboa", "Paris", 800);
-        //
-        // Line romaParis = createLine("Roma", "Paris", 700);
-        //
-        // Line parisRoma = createLine("Paris", "Roma", 700);
-        //
-        // Line parisBerlin = createLine("Paris", "Berlin", 900);
-        //
-        // Line berlinParis = createLine("Berlin", "Paris", 900);
-        //
-        // Line osloParis = createLine("Oslo", "Paris", 1300);
-        //
-        // Line berlinOslo = createLine("Berlin", "Oslo", 1200);
-        //
-        // Line osloLisboa = createLine("Oslo", "Lisboa", 1800);
+        createLine("Paris", "Prague", 900);
+        createLine("Prague", "Paris", 900);
+//        createLine("Paris", "Lisboa", 800);
+//        createLine("Lisboa", "Paris", 800);
+//        createLine("Roma", "Paris", 700);
+//        createLine("Paris", "Roma", 700);
+//        createLine("Paris", "Berlin", 900);
+//        createLine("Berlin", "Paris", 900);
+//        createLine("Oslo", "Paris", 1300);
+//        createLine("Berlin", "Oslo", 1200);
+//        createLine("Oslo", "Lisboa", 1800);
         initialized = true;
     }
 
@@ -107,13 +97,7 @@ public class AppInitializer implements Serializable {
 
                         String seat = (i + 1) + s;
                         if (!seat.equals("8C") && !seat.equals("8D")) {
-                            // ticketRepository.save(new Ticket(bus, seat, isFirstClass));
-                            final Ticket ti = ticketRepository.save(new Ticket(bus, seat, isFirstClass));
-                            // orderRepository.save(new Order(new ArrayList<Ticket>() {
-                            // {
-                            // add(ti);
-                            // }
-                            // }, null, false, ti.getBus().getLine().getPrice()));
+                            ticketRepository.save(new Ticket(bus, seat, isFirstClass));
                         }
                     }
                 }
