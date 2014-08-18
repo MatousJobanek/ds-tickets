@@ -32,7 +32,7 @@
 		<p class="title">Welcome to bus tickets reservation system</p>
 		<h2>Please select bus line are you looking for</h2>
 
-	    <h:form><h:commandButton action="#{appInitializer.initialize()}" value="initialize DB" /> </h:form>
+	    <h:form><h:commandButton action="#{appInitializer.initialize()}" value="initialize DB" rendered="#{!appInitializer.isInitialized()}" /> </h:form>
 
 		<table class="main_table">
 			<tbody>

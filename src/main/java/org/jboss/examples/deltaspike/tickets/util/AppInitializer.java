@@ -104,4 +104,8 @@ public class AppInitializer implements Serializable {
             }
         }
     }
+
+    public static boolean isInitialized() {
+        return initialized;
+    }
 }
