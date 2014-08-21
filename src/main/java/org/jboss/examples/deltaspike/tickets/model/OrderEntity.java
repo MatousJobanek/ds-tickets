@@ -1,5 +1,6 @@
 package org.jboss.examples.deltaspike.tickets.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,13 +13,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ticketsorder")
-public class OrderEntity {
+public class OrderEntity implements Serializable {
+
+    private static final long serialVersionUID = -6230727467210575441L;
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL )
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ticket> tickets;
     private String paymentType;
     private Boolean paid;
